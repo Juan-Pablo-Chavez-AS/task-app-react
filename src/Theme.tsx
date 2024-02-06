@@ -43,7 +43,7 @@ const theme = createTheme({
           transition: "all 0.4s ease-in-out",
           cursor: "pointer",
           "&:hover": {
-            transform: "scale(1.02)",
+            transform: "scale(1.01)",
             bgcolor: "#282828",
           },
           bgcolor: "#181818",

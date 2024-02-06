@@ -2,6 +2,7 @@ import { Paper, Stack } from "@mui/material";
 import { TaskCard } from "../components/task-card";
 import { useGetTasks } from "../hooks/useGetTasks";
 import { Task } from "../types/types";
+import { CreateTaskButton } from "../components/create-task-button";
 
 export const TaskList = () => {
   const { tasks, isLoading, error } = useGetTasks();
@@ -16,6 +17,7 @@ export const TaskList = () => {
         m={1}
         borderRadius={5}
       >
+        <CreateTaskButton />
         {isLoading && <p>Loading...</p>}
         {error && <p>Error: {'An error occurred'}</p>}
         {(!isLoading && !error) && tasks.map((task: Task) => (

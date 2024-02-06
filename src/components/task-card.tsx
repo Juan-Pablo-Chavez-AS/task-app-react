@@ -1,6 +1,7 @@
 import React from "react";
 import { Task } from "../types/types";
-import { Card, CardContent, CardMedia, Stack, Typography } from "@mui/material";
+import { Card, CardContent, CardMedia, Grid, IconButton, Typography } from "@mui/material";
+import { Delete, Edit } from "@mui/icons-material";
 
 interface TaskCardProps {
   task: Task;
@@ -23,12 +24,45 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
       <CardContent
         sx={{ width: "100%" }}
       >
-        <Stack
-          direction={"row"}
+        <Grid
+          container
+          alignItems={'center'}
         >
-          <Typography flexGrow={1}>{task.title}</Typography>
-          <Typography>{formatDate(task.dueDate)}</Typography>
-        </Stack>
+          <Grid
+            item
+            md={7}
+          >
+            <Typography flexGrow={1}>{task.title}</Typography>
+          </Grid>
+          <Grid
+            item
+            md={2}
+          >
+            <Typography>{task.isCompleted ? 'completed' : 'not completed'}</Typography>
+          </Grid>
+          <Grid
+            item
+            md={2}
+          >
+            <Typography>{formatDate(task.dueDate)}</Typography>
+          </Grid>
+          <Grid
+            item
+            md={0.5}
+          >
+            <IconButton>
+              <Edit />
+            </IconButton>
+          </Grid>
+          <Grid
+            item
+            md={0.5}
+          >
+            <IconButton>
+              <Delete />
+            </IconButton>
+          </Grid>
+        </Grid>
       </CardContent>
     </Card>
   );

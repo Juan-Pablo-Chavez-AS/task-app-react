@@ -5,7 +5,7 @@ import { Task } from "../types/types";
 import { CreateTaskButton } from "../components/create-task-button";
 
 export const TaskList = () => {
-  const { tasks, isLoading, error } = useGetTasks();
+  const { tasks, isLoading, error, reFetchTasks } = useGetTasks();
   return (
     <>
       <h1>Task List</h1>
@@ -17,7 +17,7 @@ export const TaskList = () => {
         m={1}
         borderRadius={5}
       >
-        <CreateTaskButton />
+        <CreateTaskButton fetchList={reFetchTasks} />
         {isLoading && <p>Loading...</p>}
         {error && <p>Error: {'An error occurred'}</p>}
         {(!isLoading && !error) && tasks.map((task: Task) => (

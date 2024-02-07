@@ -3,7 +3,11 @@ import { Button, Dialog } from "@mui/material";
 import { useState } from "react";
 import { TaskForm } from "./task-form";
 
-export const CreateTaskButton: React.FC = () => {
+interface CreateTaskButtonProps {
+  fetchList: () => void;
+}
+
+export const CreateTaskButton: React.FC<CreateTaskButtonProps> = ({ fetchList }) => {
   const [open, setOpen] = useState<boolean>(false);
 
   return (
@@ -25,7 +29,10 @@ export const CreateTaskButton: React.FC = () => {
         onClose={() => setOpen(false)}
         maxWidth="xs"
       >
-        <TaskForm />
+        <TaskForm successAction={() => {
+          setOpen(false);
+          fetchList();
+          }} />
       </Dialog>
     </>
   );
